@@ -30,7 +30,9 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./design/Desktop.png)
+![](./design/Tablet.png)
+![](./design/Mobile.png)
 
 ### Links
 
