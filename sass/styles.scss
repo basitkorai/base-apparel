@@ -1,0 +1,274 @@
+@use "./reset";
+@use "./variables" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap");
+
+body {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  font-family: $ff-body;
+}
+
+main {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: url(../images/bg-pattern-desktop.svg) no-repeat;
+  background-position: left;
+  background-size: 75%;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 0.4fr 1fr auto;
+  grid-template-areas:
+    "header hero"
+    "content hero"
+    "footer hero";
+
+  @media (max-width: $screen-tablet) {
+    background-position: bottom;
+    background-size: 100%;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      "header"
+      "hero"
+      "content"
+      "footer";
+  }
+
+  @media (max-width: $screen-mobile) {
+    background-size: cover;
+  }
+}
+
+.header {
+  grid-area: header;
+  display: inline-flex;
+
+  &__logo {
+    margin: auto;
+    width: 650px;
+
+    > img {
+      width: auto;
+      height: auto;
+    }
+  }
+
+  @media (max-width: $screen-desktop) {
+    &__logo {
+      width: 500px;
+    }
+  }
+
+  @media (max-width: $screen-laptop) {
+    &__logo > img {
+      height: 28px;
+    }
+  }
+
+  @media (max-width: $screen-tablet) {
+    &__logo {
+      padding: 40px 0;
+      width: min(650px, 80%);
+    }
+  }
+
+  @media (max-width: $screen-mobile) {
+    &__logo {
+      padding: 30px 0;
+
+      > img {
+        height: 23px;
+      }
+    }
+  }
+}
+
+.hero {
+  grid-area: hero;
+
+  picture,
+  source {
+    display: block;
+  }
+
+  main > h1 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  img {
+    width: auto;
+    height: 100vh;
+  }
+
+  @media (max-width: $screen-tablet) {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.content {
+  grid-area: content;
+  margin: 0 auto;
+  width: 650px;
+
+  &__title {
+    color: $clr-primary-600;
+    font-size: clamp(3rem, 4vw, 5rem);
+    letter-spacing: 0.8rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  &__title > div:nth-of-type(1) {
+    color: $clr-primary-300;
+    font-weight: 100;
+  }
+
+  &__text {
+    margin: 25px 0 35px 0;
+    width: min(450px, 100%);
+    color: $clr-primary-300;
+  }
+
+  &__form {
+    position: relative;
+    width: min(450px, 100%);
+
+    .form-group {
+      position: relative;
+      display: flex;
+      width: 100%;
+
+      > input[type="email"] {
+        all: unset;
+        flex-grow: 1;
+        margin-right: -2.5rem;
+        padding: 0.8rem 1.4rem;
+        border: 1px solid $clr-primary-300;
+        border-radius: 50vh 0 0 50vh; // relative to height
+
+        &::placeholder {
+          color: $clr-primary-300;
+        }
+      }
+
+      > button[type="submit"] {
+        all: unset;
+        padding: 0 2.5rem;
+        background: $clr-gradient;
+        border-radius: 50vh; // relative to height
+        font-size: 0;
+        transition: all 0.3s ease;
+        cursor: pointer;
+
+        &::before {
+          content: url(../images/icon-arrow.svg);
+        }
+
+        &:hover,
+        &:focus {
+          &:not(:active) {
+            box-shadow: 0 2px 8px 2px rgba($clr-primary-600, 0.5);
+          }
+        }
+      }
+
+      // ALERT DANGER (ERROR)
+      &__alert-danger {
+        position: absolute;
+        left: 1.5rem;
+        bottom: -2rem;
+        color: $clr-primary-400;
+        margin-top: 1rem;
+      }
+
+      // form-group error icon
+      &::before {
+        content: url("../images/icon-error.svg");
+        position: absolute;
+        top: 50%;
+        left: 70%;
+        transform: translateY(-50%);
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      &__alert-danger,
+      &::before {
+        transition: all 0.3s ease;
+
+        // error message and icon (hidden)
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      // to show error message with Javascript
+      &.alert {
+        > input[type="email"] {
+          border: 2px solid;
+          border-color: $clr-primary-400;
+        }
+
+        .form-group__alert-danger,
+        &::before {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  @media (max-width: $screen-desktop) {
+    width: 500px;
+  }
+
+  @media (max-width: $screen-laptop) {
+    &__title {
+      letter-spacing: 0.5rem;
+    }
+
+    &__form {
+      > input[type="email"] {
+        padding: 0.8rem 2rem;
+      }
+    }
+  }
+
+  @media (max-width: $screen-tablet) {
+    width: min(650px, 85%);
+    margin: 50px auto 20px auto;
+
+    > * {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &__title,
+    &__text {
+      text-align: center;
+    }
+  }
+}
+
+.footer {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: center;
+  // border: 2px solid brown;
+  background-image: $clr-gradient;
+  padding: 0.2rem;
+
+  a {
+    color: hsl(276, 100%, 50%);
+    text-decoration: none;
+  }
+}

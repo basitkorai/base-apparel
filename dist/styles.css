@@ -1,0 +1,300 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap");
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  width: 100%;
+  height: auto;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  position: relative;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Natural flow and rhythm in articles by default */
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+body {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+main {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: url(../images/bg-pattern-desktop.svg) no-repeat;
+  background-position: left;
+  background-size: 75%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 0.4fr 1fr auto;
+  grid-template-areas: "header hero" "content hero" "footer hero";
+}
+@media (max-width: 912px) {
+  main {
+    background-position: bottom;
+    background-size: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas: "header" "hero" "content" "footer";
+  }
+}
+@media (max-width: 412px) {
+  main {
+    background-size: cover;
+  }
+}
+
+.header {
+  grid-area: header;
+  display: inline-flex;
+}
+.header__logo {
+  margin: auto;
+  width: 650px;
+}
+.header__logo > img {
+  width: auto;
+  height: auto;
+}
+@media (max-width: 1440px) {
+  .header__logo {
+    width: 500px;
+  }
+}
+@media (max-width: 1366px) {
+  .header__logo > img {
+    height: 28px;
+  }
+}
+@media (max-width: 912px) {
+  .header__logo {
+    padding: 40px 0;
+    width: min(650px, 80%);
+  }
+}
+@media (max-width: 412px) {
+  .header__logo {
+    padding: 30px 0;
+  }
+  .header__logo > img {
+    height: 23px;
+  }
+}
+
+.hero {
+  grid-area: hero;
+}
+.hero picture,
+.hero source {
+  display: block;
+}
+.hero main > h1 {
+  display: flex;
+  flex-direction: column;
+}
+.hero img {
+  width: auto;
+  height: 100vh;
+}
+@media (max-width: 912px) {
+  .hero img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.content {
+  grid-area: content;
+  margin: 0 auto;
+  width: 650px;
+}
+.content__title {
+  color: hsl(0, 6%, 24%);
+  font-size: clamp(3rem, 4vw, 5rem);
+  letter-spacing: 0.8rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.content__title > div:nth-of-type(1) {
+  color: hsl(0, 36%, 70%);
+  font-weight: 100;
+}
+.content__text {
+  margin: 25px 0 35px 0;
+  width: min(450px, 100%);
+  color: hsl(0, 36%, 70%);
+}
+.content__form {
+  position: relative;
+  width: min(450px, 100%);
+}
+.content__form .form-group {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+.content__form .form-group > input[type=email] {
+  all: unset;
+  flex-grow: 1;
+  margin-right: -2.5rem;
+  padding: 0.8rem 1.4rem;
+  border: 1px solid hsl(0, 36%, 70%);
+  border-radius: 50vh 0 0 50vh;
+}
+.content__form .form-group > input[type=email]::placeholder {
+  color: hsl(0, 36%, 70%);
+}
+.content__form .form-group > button[type=submit] {
+  all: unset;
+  padding: 0 2.5rem;
+  background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+  border-radius: 50vh;
+  font-size: 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.content__form .form-group > button[type=submit]::before {
+  content: url(../images/icon-arrow.svg);
+}
+.content__form .form-group > button[type=submit]:hover:not(:active), .content__form .form-group > button[type=submit]:focus:not(:active) {
+  box-shadow: 0 2px 8px 2px rgba(65, 58, 58, 0.5);
+}
+.content__form .form-group__alert-danger {
+  position: absolute;
+  left: 1.5rem;
+  bottom: -2rem;
+  color: hsl(0, 93%, 68%);
+  margin-top: 1rem;
+}
+.content__form .form-group::before {
+  content: url("../images/icon-error.svg");
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.content__form .form-group__alert-danger, .content__form .form-group::before {
+  transition: all 0.3s ease;
+  visibility: hidden;
+  opacity: 0;
+}
+.content__form .form-group.alert > input[type=email] {
+  border: 2px solid;
+  border-color: hsl(0, 93%, 68%);
+}
+.content__form .form-group.alert .form-group__alert-danger, .content__form .form-group.alert::before {
+  visibility: visible;
+  opacity: 1;
+}
+@media (max-width: 1440px) {
+  .content {
+    width: 500px;
+  }
+}
+@media (max-width: 1366px) {
+  .content__title {
+    letter-spacing: 0.5rem;
+  }
+  .content__form > input[type=email] {
+    padding: 0.8rem 2rem;
+  }
+}
+@media (max-width: 912px) {
+  .content {
+    width: min(650px, 85%);
+    margin: 50px auto 20px auto;
+  }
+  .content > * {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .content__title, .content__text {
+    text-align: center;
+  }
+}
+
+.footer {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+  padding: 0.2rem;
+}
+.footer a {
+  color: hsl(276, 100%, 50%);
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=styles.css.map */
