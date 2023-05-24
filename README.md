@@ -37,7 +37,7 @@ Users should be able to:
 ### Links
 
 - Github Repo: [🍴 Fork me](https://github.com/basitkorai/Base-Apparel)
-- Live Site: [🏡I Live Here](https://basitkorai.github.io/Base-Apparel/)
+- Live Site: [🏡I'm Live Here](https://basitkorai.github.io/Base-Apparel/)
 
 ## My process
 
