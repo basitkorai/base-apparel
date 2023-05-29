@@ -53,7 +53,7 @@ Users should be able to:
 ### What I learned
 
 - I learnt and used CSS GRID's `grid-template-area` for this complex layout.
-- I also learn and used the - [SASS](https://sass-lang.com) in my Project
+- I used the - [SASS](https://sass-lang.com) in my Project
 
 ```scss
 main {
