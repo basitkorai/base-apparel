@@ -36,8 +36,8 @@ Users should be able to:
 
 ### Links
 
-- Github Repo: [🍴 Fork me](https://github.com/basitkorai/Base-Apparel)
-- Live Site: [🏡I'm Live Here](https://basitkorai.github.io/Base-Apparel/)
+- Github Repo: [🍴 Fork me](https://github.com/basitkorai/base-apparel)
+- Live Site: [🏡I'm Live Here](https://basitkorai.github.io/base-apparel/)
 
 ## My process
 
