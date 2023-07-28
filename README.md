@@ -116,7 +116,7 @@ enteredEmail.addEventListener("input", () =>
 
 ## Author
 
-- Website - Don't have it yet
+- [Basit Korai](https://basitkorai.netlify.app) - a self-taught Full Stack Developer.
 - Frontend Mentor - [@basit-flash](https://www.frontendmentor.io/profile/basit-flash)
 - Twitter - [@basitxkorai](https://www.twitter.com/basitxkorai)
 
